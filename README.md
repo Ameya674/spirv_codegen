@@ -53,7 +53,7 @@ make
 ./bin/codegen
 ```
 
-#### LLVM IR Output
+#### LLVM IR Output of the SPIRV Kernel
 ```bash
 ; ModuleID = 'code_generated'
 source_filename = "code_generated"

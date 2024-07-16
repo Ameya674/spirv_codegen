@@ -1,0 +1,31 @@
+codegen.cpp - connects to the drivers and the runtime and calls the function to generate SPIRV, also contains code for the array and adding +1 to it
+
+helpers.cpp - contains the function generate_plus_one_spv() that generates LLVM IR and converts it to SPIRV
+
+helpers.h - header file of helpers.cpp
+
+1) Miniconda Installation 
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+export PATH="<path_to_miniconda_binaries>:$PATH"
+source ~/.bashrc
+
+2) Clone the Unified Runtime repo
+git clone https://github.com/oneapi-src/unified-runtime
+
+3) Building the examples
+
+Using Conda - 
+conda env create -f third_party/deps.yml
+conda activate examples
+mkdir build && cd build
+cmake .. -DUR_BUILD_ADAPTER_L0=ON -DUR_BUILD_EXAMPLE_CODEGEN=ON
+make
+./bin/codegen
+
+
+Without using Conda - 
+mkdir build && cd build
+cmake .. -DUR_BUILD_ADAPTER_L0=ON -DUR_BUILD_EXAMPLE_CODEGEN=ON -DLLVM_DIR=/usr/lib/llvm-13/cmake
+make
+./bin/codegen
